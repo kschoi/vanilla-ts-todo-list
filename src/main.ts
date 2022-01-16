@@ -1,8 +1,10 @@
-import './style.css'
+import App from "./app.js";
 
-const app = document.querySelector<HTMLDivElement>('#app')!
+import "./styles/style.css";
 
-app.innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+new App(document.querySelector<HTMLDivElement>("#app")!);
+
+// app.innerHTML = `
+//   <h1>Hello Vite!</h1>
+//   <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
+// `;
