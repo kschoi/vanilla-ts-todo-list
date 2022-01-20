@@ -1,5 +1,6 @@
-import { ITodoData } from "../entities";
 import Todo from "./Todo";
+import type { ITodoData } from "./Todo";
+import api from "../apis/api";
 
 interface ITodoList {
   edit(e: Event): void;
@@ -16,6 +17,7 @@ export default class TodoList implements ITodoList {
     this.#container = document.createElement("section");
     this.#container.className = "container";
     this.#container.onclick = this.onClick.bind(this);
+    this.#container.onchange = this.onChange.bind(this);
 
     $target.appendChild(this.#container);
 
@@ -35,6 +37,17 @@ export default class TodoList implements ITodoList {
     let action = target.dataset.action as keyof ITodoList;
     if (action && this[action]) {
       this[action]();
+    }
+  }
+
+  onChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+
+    if (target.tagName === "INPUT") {
+      const id = target.id;
+      api.updateTodo(id, {
+        completed: !!!target.checked,
+      });
     }
   }
 

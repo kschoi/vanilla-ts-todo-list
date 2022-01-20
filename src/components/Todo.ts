@@ -1,4 +1,8 @@
-import { ITodoData } from "../entities";
+export interface ITodoData {
+  id: string;
+  title: string;
+  completed: boolean;
+}
 
 export default class Todo {
   #target: HTMLElement;
@@ -17,16 +21,15 @@ export default class Todo {
   }
 
   render() {
-    const id = `${this.#data.id}`;
+    const { id, completed, title } = this.#data;
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = id;
-    checkbox.readOnly = true;
-    checkbox.checked = this.#data.completed;
+    checkbox.checked = completed;
 
     const label = document.createElement("label");
-    label.innerHTML = this.#data.title;
+    label.innerHTML = title;
     label.htmlFor = id;
 
     this.#todo.appendChild(checkbox);

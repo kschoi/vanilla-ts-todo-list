@@ -30,6 +30,6 @@ body {
   margin-right: 10px;
 }
 
-.todo[data-completed="true"] {
+.todo input[type="checkbox"]:checked + label {
   text-decoration: line-through;
 }
