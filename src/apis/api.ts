@@ -21,7 +21,7 @@ const request = async (resource: string, init?: Record<string, any>) => {
 };
 
 const api = {
-  fetchTodos: async () => {
+  fetchAll: async () => {
     try {
       const result = await request(`${API_ENDPOINT}/todos`);
       return result;
@@ -29,7 +29,19 @@ const api = {
       return e;
     }
   },
-  removeTodo: async (id: string) => {
+  add: async (data: Partial<ITodoData>) => {
+    try {
+      const result = await request(`${API_ENDPOINT}/todos`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      return result;
+    } catch (e) {
+      return e;
+    }
+  },
+  delete: async (id: number) => {
     try {
       const result = await request(`${API_ENDPOINT}/todos/${id}`, {
         method: "DELETE",
@@ -39,7 +51,7 @@ const api = {
       return e;
     }
   },
-  updateTodo: async (id: string, data: Partial<ITodoData>) => {
+  update: async (id: number, data: Partial<ITodoData>) => {
     try {
       const result = await request(`${API_ENDPOINT}/todos/${id}`, {
         method: "PATCH",

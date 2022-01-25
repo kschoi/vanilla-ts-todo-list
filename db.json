@@ -7,13 +7,13 @@
     },
     {
       "id": 2,
-      "title": "2022년 연말정산 자료 준비",
-      "completed": true
+      "title": "연말정산 자료 준비",
+      "completed": false
     },
     {
       "id": 3,
       "title": "상품유닛 좋아요 기능 구현",
-      "completed": true
+      "completed": false
     },
     {
       "id": 4,
