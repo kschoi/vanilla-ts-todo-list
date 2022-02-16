@@ -2,7 +2,7 @@
   "name": "vanilla-ts-todo-list",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3001",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "api": "npx json-server --watch db.json --port 3004"
